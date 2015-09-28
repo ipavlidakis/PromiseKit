@@ -67,7 +67,7 @@ Pod::Spec.new do |s|
     ss.preserve_paths = 'objc/PromiseKit', 'objc/Private'
     ss.frameworks = 'Foundation'
   end
-  
+
   %w{Pause Until When}.each do |name|
     s.subspec(name) do |ss|
       ss.source_files = "objc/PMKPromise+#{name}.m", "objc/PromiseKit/Promise+#{name}.h"
@@ -122,7 +122,7 @@ Pod::Spec.new do |s|
     ss.osx.deployment_target = '10.6'
   end
   s.mksubspec 'NSURLConnection' do |ss|
-    ss.dependency "OMGHTTPURLRQ"
+    ss.dependency 'OMGHTTPURLRQ','~> 2.1.3'
     ss.ios.deployment_target = '5.0'
     ss.osx.deployment_target = '10.7'
   end
@@ -148,7 +148,7 @@ Pod::Spec.new do |s|
     ss.ios.deployment_target = '5.0'
     ss.ios.weak_frameworks = 'AssetsLibrary'
   end
-  
+
   s.subspec 'Accounts' do |ss|
     ss.dependency 'PromiseKit/ACAccountStore'
   end
@@ -187,7 +187,7 @@ Pod::Spec.new do |s|
   s.subspec 'all' do |ss|
     ss.dependency 'PromiseKit/When'
     ss.dependency 'PromiseKit/Until'
-    ss.dependency 'PromiseKit/Pause'    
+    ss.dependency 'PromiseKit/Pause'
 
     ss.dependency 'PromiseKit/Accounts'
     ss.dependency 'PromiseKit/AVFoundation'
