@@ -38,7 +38,7 @@ Pod::Spec.new do |s|
 
     subspec(name) do |ss|
 
-      # this method because CocoaPods insists 
+      # this method because CocoaPods insists
       max = Proc.new do |a, b|
         split = Proc.new{ |f| f.split('.').map{|s| s.to_i } }
         [split.call(a), split.call(a)].max.join(".")
@@ -59,7 +59,7 @@ Pod::Spec.new do |s|
         #ss.osx.deployment_target = max.call(osx, self.deployment_target(:osx))
         ss.osx.deployment_target = deployment_target(:osx)
       end
-      
+
       yield(ss) if block_given?
 
       ss = if !ios
@@ -107,7 +107,7 @@ Pod::Spec.new do |s|
   s.mksubspec 'NSNotificationCenter', ios: '4.0', osx: '10.6'
   s.mksubspec 'NSTask', osx: '10.0'
   s.mksubspec 'NSURLConnection', ios: '5.0', osx: '10.7' do |ss|
-    ss.dependency "OMGHTTPURLRQ"
+    ss.dependency 'OMGHTTPURLRQ','~> 2.1.3'
   end
   s.mksubspec 'SKRequest', ios: '3.0', osx: '10.7'
   s.mksubspec 'SLRequest', ios: '6.0', osx: '10.8'
@@ -182,7 +182,7 @@ Pod::Spec.new do |s|
   s.subspec 'Swift' do |ss|
     ss.default_subspecs = 'Foundation', 'UIKit'
     ss.ios.deployment_target = 8.0
-    ss.osx.deployment_target = 10.9    
+    ss.osx.deployment_target = 10.9
 
     ss.subspec 'Promise' do |sss|
       sss.source_files = %w{Promise when misc constants after race}.map{ |x| "Swift Sources/#{x}.swift" }
@@ -194,7 +194,7 @@ Pod::Spec.new do |s|
       sss.ios.deployment_target = 8.0
       sss.osx.deployment_target = '10.10'
     end
-    
+
     ss.subspec 'UIKit' do |sss|
       sss.dependency 'PromiseKit/Swift/Promise'
       sss.ios.source_files = 'Swift Sources/UI*.swift'
@@ -210,7 +210,7 @@ Pod::Spec.new do |s|
       sss.dependency 'PromiseKit/Swift/Promise'
       sss.source_files = 'Swift Sources/MK*.swift'
     end
-    
+
     ss.subspec 'NSJSONFromData' do |sss|
       sss.dependency 'PromiseKit/Swift/Promise'  # only needs constants in fact
       sss.source_files = 'Swift Sources/NSJSONFromData.swift'
@@ -230,7 +230,7 @@ Pod::Spec.new do |s|
     ss.subspec 'Foundation' do |sss|
       sss.dependency 'PromiseKit/Swift/Promise'
       sss.dependency 'PromiseKit/Swift/NSJSONFromData'
-      sss.dependency 'OMGHTTPURLRQ'
+      sss.dependency 'OMGHTTPURLRQ','~> 2.1.3'
       ios = %w{NSFileManager NSNotificationCenter NSURLConnection}.map{|x| "Swift Sources/#{x}+Promise.swift"}
       sss.ios.source_files = ios
       sss.osx.source_files = ios + ['Swift Sources/NSTask+Promise.swift']
@@ -245,7 +245,7 @@ Pod::Spec.new do |s|
       sss.dependency 'PromiseKit/Swift/Promise'
       sss.source_files = "Swift Sources/AC*.swift"
     end
-    
+
     ss.subspec 'AVFoundation' do |sss|
       sss.dependency 'PromiseKit/Swift/Promise'
       sss.ios.source_files = "Swift Sources/AV*.swift"
